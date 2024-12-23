@@ -11,12 +11,13 @@ source:
 build:
   number: 1
   noarch: python
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv "
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
-    - pip
     - python {{ python_min }}
+    - setuptools
+    - pip
     - pyct-core >=0.4.4
   run:
     - python >={{ python_min }}
